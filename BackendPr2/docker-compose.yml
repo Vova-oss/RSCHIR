@@ -1,0 +1,41 @@
+version: '3.1'
+services:
+#  app:
+#    container_name: container_onlinibbyvye
+#    image: new_interest_image_i43u
+#    build: ./
+#    ports:
+#      - "7777:7777"
+#    depends_on:
+#      - postgresqldb
+
+  app:
+    image: openjdk:15
+    container_name: app_osdfsofdj
+    ports:
+    - "7777:7777"
+    volumes:
+    - ./target/demo-0.0.1-SNAPSHOT.jar:/app.jar
+    command: java -jar app.jar
+
+
+  postgresqldb:
+    image: postgres
+    container_name: yiialkalmi_postgres_1
+    volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/10-init.sql
+        - ./entrypoint.sh:/docker-entrypoint-initdb.d/entrypointA.sh
+        - ./initA.sql:/initA.sql
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+
+
+
+
+#    command: docker exec -it yiialkalmi_postgres_1 bash entrypointA.sh
+
+

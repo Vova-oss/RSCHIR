@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #Spreed {
+            border-collapse: collapse;
+            width: 80%;
+            border: 1px solid #000000;
+            font-size: 18px;
+            margin: 5% auto;
+        }
+
+        #Spreed th {
+            border: 1px solid #000000;
+            padding: 12px;
+            text-align:center;
+        }
+
+        #Spreed tr {
+            border-bottom: 1px solid #000000;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center">Таблица пользователей данного продукта</h1>
+
+<table id="Spreed" style="padding-left: 5%">
+    <tr><th>Id</th><th>Name</th><th>Surname</th></tr>
+    <form>
+        <tr th:each="user: ${users}">
+            <th>[[${user.id}]]</th>
+            <th>[[${user.name}]]</th>
+            <th>[[${user.surname}]]</th>
+
+        </tr>
+    </form>
+</table>
+
+</body>
+</html>
+

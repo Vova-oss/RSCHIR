@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas class="canvas" id="canvas" width="1000" height="1000"></canvas>
+
+
+    <script th:inline="javascript">
+        // // Внедрение переменной
+        let figure = /*[[${figure}]]*/ 'huh';
+        let color = /*[[${color}]]*/ 'color';
+        let size = /*[[${size}]]*/ 'size'
+        // alert(a);
+
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext('2d');
+
+        switch (color) {
+            case "red":
+                ctx.fillStyle = "red";
+                break;
+            case "blue":
+                ctx.fillStyle = "blue";
+                break;
+            case "green":
+                ctx.fillStyle = "green";
+                break;
+            case "yellow":
+                ctx.fillStyle = "yellow";
+                break;
+        }
+
+        if(figure === '0'){
+            // Рисуем треугольник
+            ctx.beginPath();
+            ctx.moveTo(50 * size, 0);
+            ctx.lineTo(100 * size, 70 * size);
+            ctx.lineTo(0, 70 * size);
+            ctx.closePath();
+            ctx.fill();
+        }
+        if(figure === '1'){
+            // Рисуем квадрат
+            ctx.fillRect(0, 0, 100 * size, 100 * size);
+        }
+        if(figure === '2'){
+            // Рисуем ромб
+            ctx.beginPath();
+            ctx.moveTo(50 * size, 0);
+            ctx.lineTo(100 * size, 50 * size);
+            ctx.lineTo(50 * size, 100 * size);
+            ctx.lineTo(0, 50 * size);
+            ctx.closePath();
+            ctx.fill();
+        }
+        if(figure === '3'){
+            //Рисуем круг
+            ctx.beginPath();
+            ctx.arc(50 * size, 50 * size, 50 * size, 0, Math.PI*2 , true);
+            ctx.fill();
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+</html>
