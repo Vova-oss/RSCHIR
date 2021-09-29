@@ -8,9 +8,10 @@ public class Service {
 
     public Map<String,String> method(Integer num){
         num = num % 63;
+        while (num<32)
+            num = num << 1;
         StringBuilder binaryString = new StringBuilder(Integer.toBinaryString(num));
-        while (binaryString.length()<6)
-            binaryString.insert(0, "0");
+
 
         int figure = Integer.parseInt(binaryString.substring(0,2), 2);
         int numColor = Integer.parseInt(binaryString.substring(2,4), 2);
