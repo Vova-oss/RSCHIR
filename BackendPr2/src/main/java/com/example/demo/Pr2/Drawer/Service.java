@@ -6,16 +6,15 @@ import java.util.Map;
 @org.springframework.stereotype.Service
 public class Service {
 
-    public Map<String,String> method(Integer num){
-        num = num % 63;
-        while (num<32)
-            num = num << 1;
-        StringBuilder binaryString = new StringBuilder(Integer.toBinaryString(num));
+    public Map<String,String> method(int num){
+        num = 63 - num % 63;
+        StringBuilder binaryString = new StringBuilder(Integer.toBinaryString(~num));
+        String stroka = binaryString.substring(26, 32);
 
 
-        int figure = Integer.parseInt(binaryString.substring(0,2), 2);
-        int numColor = Integer.parseInt(binaryString.substring(2,4), 2);
-        int size = Integer.parseInt(binaryString.substring(4,6), 2) + 1;
+        int figure = Integer.parseInt(stroka.substring(0,2), 2);
+        int numColor = Integer.parseInt(stroka.substring(2,4), 2);
+        int size = Integer.parseInt(stroka.substring(4,6), 2) + 1;
         String color = "";
         switch (numColor){
             case 0:
